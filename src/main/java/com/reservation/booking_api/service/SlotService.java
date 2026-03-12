@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,20 +30,20 @@ public class SlotService {
     public List<SlotResponse> getAllSlots() {
         return slotRepository.findAll().stream()
                 .map(this::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<SlotResponse> getSlotsByRoom(String roomId) {
         return slotRepository.findByRoomId(roomId).stream()
                 .map(this::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<SlotResponse> getMySlots() {
         User currentUser = getCurrentUser();
         return slotRepository.findByUserId(currentUser.getId()).stream()
                 .map(this::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public SlotResponse createSlot(SlotRequest request) {

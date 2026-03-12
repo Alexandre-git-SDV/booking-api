@@ -1,0 +1,14 @@
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 7.0.9
+
+spring:
+  data:
+    mongodb:
+      database: test_db
+
+jwt:
+  secret: dGVzdC1zZWNyZXQta2V5LXdpdGgtYXQtbGVhc3QtMjU2LWJpdHMtZm9yLWhtYWMtc2hhLTI1Ng==
+  expiration: 86400000

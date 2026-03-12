@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,13 +20,13 @@ public class RoomService {
     public List<RoomResponse> getAllRooms() {
         return roomRepository.findAll().stream()
                 .map(this::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<RoomResponse> getAvailableRooms() {
         return roomRepository.findByAvailableTrue().stream()
                 .map(this::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public RoomResponse getRoomById(String id) {
