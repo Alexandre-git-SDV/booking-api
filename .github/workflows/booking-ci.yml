@@ -17,12 +17,12 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          
-      - name: Run Qodana
-        uses: jetbrains/qodana-github-action@v1.3.1
+          cache: maven
+
+      - name: Compile
+        run: mvn -B compile --file pom.xml
 
   test:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
         run: mvn -B test --file pom.xml
 
   build-maven:
-    needs: test
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
